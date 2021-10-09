@@ -17,6 +17,9 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
+                background-color: #1a202c !important;
+                margin:0 auto !important;
+                padding:0 !important;
             }
         </style>
     </head>
@@ -44,9 +47,10 @@
                         </g>
                     </svg> -->
                     <img src="assets/images/Funa.png" width="200" height="150" alt="Funa" />
+
                 </div>
                 <!-- dark:bg-gray-800 bg-white  -->
-                <div class="mt-8 overflow-hidden shadow sm:rounded-lg ">
+                <div class="mt-8 overflow-hidden ">
                     <div class=" grid grid-margin-lg-50 text-center text-sm text-gray-500 m-50">
                        
                         <h1>Welcome</h1>
@@ -55,7 +59,7 @@
                 </div>
  
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden">
                     <div class="grid grid-cols-2 md:grid-cols-2">
                     <!-- <h1>Welcome</h1> -->
 
@@ -77,8 +81,8 @@
                     </div>
                 </div>
 
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between mt-200">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
+                <div class="flex justify-center pt-8 sm:justify-center sm:pt-0">
+                <div class="text-center items-center text-sm text-gray-500 sm:text-center">
                         <div class="flex items-center">
                             <!-- <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
                                 <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -92,7 +96,7 @@
                                 Login
                             </a>
 
-                                <div class="ml-2"></div>
+                        <div class="ml-2"></div>
 
                              <svg  viewBox="0 0 512 512"   stroke-width="2" fill="#FFFFFF" class="-mt-px w-5 h-5 text-gray-400">
                              <path d="M258.9 48C141.92 46.42 46.42 141.92 48 258.9c1.56 112.19 92.91 203.54 205.1 205.1 117 1.6 212.48-93.9 210.88-210.88C462.44 140.91 371.09 49.56 258.9 48zm126.42 327.25a4 4 0 01-6.14-.32 124.27 124.27 0 00-32.35-29.59C321.37 329 289.11 320 256 320s-65.37 9-90.83 25.34a124.24 124.24 0 00-32.35 29.58 4 4 0 01-6.14.32A175.32 175.32 0 0180 259c-1.63-97.31 78.22-178.76 175.57-179S432 158.81 432 256a175.32 175.32 0 01-46.68 119.25z"/><path d="M256 144c-19.72 0-37.55 7.39-50.22 20.82s-19 32-17.57 51.93C191.11 256 221.52 288 256 288s64.83-32 67.79-71.24c1.48-19.74-4.8-38.14-17.68-51.82C293.39 151.44 275.59 144 256 144z"/>
