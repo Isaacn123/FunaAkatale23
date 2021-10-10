@@ -154,11 +154,11 @@
                     <div class="d-flex">
                       <div class="d-flex align-items-center mr-4 text-muted font-weight-light">
                         <i class="mdi mdi-account-outline icon-sm mr-2"></i>
-                        <span>jack Menqu</span>
+                        <span>jack More</span>
                       </div>
                       <div class="d-flex align-items-center text-muted font-weight-light">
                         <i class="mdi mdi-clock icon-sm mr-2"></i>
-                        <span>October 3rd, 2018</span>
+                        <span>October 3rd, 2021</span>
                       </div>
                     </div>
                     <div class="row mt-3">
