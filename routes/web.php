@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\controllers\CategoryController;
-use App\Http\controllers\Controller;
-use App\Http\controllers\DashboardController;
-use App\Http\controllers\subCategoryController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\subCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
