@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('zipcode')->nullable();
             $table->string('image')->default("noimage.jpg");
             $table->boolean('status')->default(1);
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
