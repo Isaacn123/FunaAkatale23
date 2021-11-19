@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Business;
+use App\models\Business;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class BusinessController extends Controller
 {
@@ -12,11 +14,34 @@ class BusinessController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function index()
+    // {
+    //     //->with('businesses', Business::all())->get()
+    //     return Business::all();
+    // }
+
+
+
+
+       /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        //
-        return Business::all();
+        //->with('businesses', Business::all())->get()
+        $featuredvalue = 1;
+        $business = Business::all();
+
+        // $user = User::with('User')->find(Auth::user()->id);
+        
+        return $business->filter(function ($value, $key){
+            return data_get($value, 'featured_business') === 1;
+        });
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,15 +63,78 @@ class BusinessController extends Controller
     {
       
         $request->validate([
-                "name" => 'required',
-                "description"  => 'required',
-                "andress" => 'required',
-                "image" => 'required',
-        
+                "name" => 'bail|required',
+                "description"  => 'bail|required',
+                "andress" => 'bail|required',
         ]);
 
         //
-        Business::create($request->all(), ['message' => 'Data has been stored.']); //
+        // if(isset($request->image)){
+        
+        // $img = $request->image;
+        // $name = "Business_" . time() . '.' .$img->extension();
+        // $file = public_path('/images/business/');
+        // $success = $img->move($file, $name);
+        
+        // $request->image = $name;
+        // }
+
+          $businessInfo = new Business();
+
+          $businessInfo ->name = $request->name;
+          $businessInfo ->user_id = Auth::user()->id;
+          $businessInfo ->description = $request->description;
+          $businessInfo ->website = $request-> website;
+          $businessInfo ->slug = $request-> slug;
+          $businessInfo ->andress = $request-> andress;
+          $businessInfo ->email = $request-> email;
+          $businessInfo ->contact = $request->contact;
+          $businessInfo ->code = $request->code;
+          $businessInfo ->zipcode = $request-> zipcode;
+          $businessInfo ->categoryName = $request->categoryName;
+          $businessInfo ->subcategoryName = $request->subcategoryName;
+          $businessInfo ->country = $request->country;
+          $businessInfo ->city = $request->city;
+          $businessInfo ->fax = $request->fax;
+          
+        // $product->name = $request->name;
+        // $product->price = $request->price;
+        // $product->service_id = json_encode($request->service_id);
+        // $product->status = $request->status;
+        
+        if($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $name = 'Business_'.time().'.'. $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/business/logo');
+            $image->move($destinationPath, $name);
+            $businessInfo->image = $name;
+        }
+
+
+        // $businessInfo ->featured_business = $request-> featured_business;
+
+
+          if($request->hasFile('featured_image'))
+          {
+              $image = $request->file('featured_image');
+              $name = 'Business_'.time().'.'. $image->getClientOriginalExtension();
+              $destinationPath = public_path('/images/business/featuredImage ');
+              $image->move($destinationPath, $name);
+              $businessInfo->featured_image = $name;
+          }
+        $businessInfo->save();
+
+
+    //    $business =  Business::create($request->all()); //
+
+       $response = Response(
+        [
+         'message' => 'Business has been successfully added',
+         'data' => $businessInfo,
+        ], 200
+    );
+    return $response;
     }
 
     /**
@@ -83,12 +171,65 @@ class BusinessController extends Controller
     public function update(Request $request, $id)
     {
         //
-       $company = Business::find($id);
 
-         $company->update($request->all());
+        // $user_id = $request->input('user_id');
+        // $user = User::find($user_id);
+        // $company ->user_id = Auth::user()->id;
+
+         $company = Business::find($id);
+
+
+       $company ->name = $request->name;
+       $company ->description = $request->description;
+       $company ->website = $request-> website;
+       $company ->andress = $request-> andress;
+       $company ->email = $request-> email;
+       $company ->contact = $request->contact;
+       $company ->code = $request->code;
+       $company ->zipcode = $request-> zipcode;
+       $company ->categoryName = $request->categoryName;
+       $company ->subcategoryName = $request->subcategoryName;
+       $company ->country = $request->country;
+       $company ->city = $request->city;
+       
+     // $product->name = $request->name;
+     // $product->price = $request->price;
+     // $product->service_id = json_encode($request->service_id);
+     // $product->status = $request->status;
+     
+     if($request->hasFile('image'))
+     {
+         $image = $request->file('image');
+         $name = 'Business_'.time().'.'. $image->getClientOriginalExtension();
+         $destinationPath = public_path('/images/business/logo');
+         $image->move($destinationPath, $name);
+         $company->image = $name;
+     }
+
+
+     // $businessInfo ->featured_business = $request-> featured_business;
+
+
+       if($request->hasFile('featured_image'))
+       {
+           $image = $request->file('featured_image');
+           $name = 'Business_'.time().'.'. $image->getClientOriginalExtension();
+           $destinationPath = public_path('/images/business/featuredImage ');
+           $image->move($destinationPath, $name);
+           $businessInfo->featured_image = $name;
+       }
+    //    $company->save();
+       
+       $company->update();
+
+        //  $company->update([
+        //     "name" => $request -> name
+        //  ]);
 
         return [
             'message' => 'Successfully updated',
+            "data" => $company,
+            "success" => true
         ];
     }
 
@@ -119,4 +260,11 @@ class BusinessController extends Controller
     public function search($name){
         return Business::where('name','like','%'.$name.'%')->get();
     }
+
+
+
+    // public function getImagePathAttribute()
+    // {
+    //     return url('images/business') . '/';
+    // }
 }

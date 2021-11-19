@@ -33,7 +33,7 @@
                  </td>
                  <td>
                      {{$subcategory->category_id}}
-                 </td>
+                 </td>        
                  <td>
                      <button  onclick="handleDelete({{$subcategory->id}})" class="btn btn-danger btn-sm">Delete</button>
                  </td>

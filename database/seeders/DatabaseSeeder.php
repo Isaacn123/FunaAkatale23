@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $faker = Faker::create();
 
         foreach(range(0, 30) as $index){
-          DB::table('businesses')->insert([
+          DB::table('business')->insert([
             'name' => $faker->company,
             'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
             'website' => $faker->domainName,

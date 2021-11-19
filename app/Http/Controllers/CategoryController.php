@@ -14,6 +14,16 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
 
+
+
+    // public function indexcategory()
+    // {
+    //     //
+    //     $limit = 25;
+    //     return Category::all();
+    // }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +31,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        
+        // if(request()->json()){
+           
+        // }
+
         //
         $limit = 25;
+
         return view('categories.index')->with('categories', Category::orderBy('id', 'desc')->paginate($limit));
     }
 

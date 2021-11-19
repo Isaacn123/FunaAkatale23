@@ -2,22 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\SubCategory;
-use App\Http\Requests\CreateSubCategoryRequest;
 
-
-class subCategoryController extends Controller
+class PostCategory extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -26,13 +15,7 @@ class subCategoryController extends Controller
     public function index()
     {
         //
-
-        $limit = 25;
-
-        // $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        // $start = ($page - 1) * $limit;
-
-        return view('subcategory.index')->with('subcategories', SubCategory::orderBy('id', 'desc')->paginate($limit));
+        return Category::all();
     }
 
     /**
@@ -43,7 +26,6 @@ class subCategoryController extends Controller
     public function create()
     {
         //
-        return view('subcategory.create')->with('categories', Category::all());
     }
 
     /**
@@ -52,20 +34,9 @@ class subCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateSubCategoryRequest $request)
+    public function store(Request $request)
     {
         //
-        // $request->validate(
-        //     [
-        //         'subcategoryname'=> 'required',
-        //         'slug'=> 'required',
-        //     ]
-        // );
-        //   $category->category_name = $request->category_name;
-        Subcategory::create($request->all());
-        @session()->flash('success', 'SubCategory Successfully stored.');
-
-        return redirect()->route('sub-category.index');
     }
 
     /**
@@ -111,13 +82,5 @@ class subCategoryController extends Controller
     public function destroy($id)
     {
         //
-       //  $subcategory->delete($subcategory->all());
-         $category = Subcategory::find($id);
-         
-         $category->delete();
-
-         @session()->flash('success', 'Successfully deleted the specified SubCategory.');
-             
-         return redirect()->route('sub-category.index');
     }
 }

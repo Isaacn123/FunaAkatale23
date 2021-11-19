@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ config('app.name', 'FUNA AKATALE') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{URL::asset('assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/vendors/css/vendor.bundle.base.css')}}">
@@ -38,7 +38,7 @@
 
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="#"><img src="{{URL::asset('assets/images/logo.png')}}" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="index.html"><img src="{{URL::asset('assets/images/logo.png')}}" alt="logo" /></a>
           <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{URL::asset('assets/images/logo-mini.svg')}}" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -65,8 +65,7 @@
                 <div class="nav-profile-text">
                   <p class="mb-1 text-black">
                     <!-- David Greymaax -->
-                    {{ Auth::user()->name }}
-
+                    {{ Auth::user()->name }} 
                   </p>
                 </div>
               </a>
@@ -375,12 +374,7 @@
     <!-- Custom js for this page -->
     <script src="{{URL::asset('assets/js/dashboard.js')}}"></script>
     <script src="{{URL::asset('assets/js/todolist.js')}}"></script>
-
-
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-     -->
-<!-- End custom js for this page -->
+    <!-- End custom js for this page -->
 
     @yield('scripts')
   </body>

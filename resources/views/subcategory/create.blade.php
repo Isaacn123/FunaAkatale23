@@ -43,10 +43,11 @@
 
                   <div class="form-group">
                       <label for="selectcategory">select Category</label>
-                      <select name="category_id" id="selectcategory" class="form-control">
+                      <select  name="category_name"  id="selectcategory" class="form-control">
                       <option value="" selected disabled hidden>Choose Category here</option>
                        @foreach($categories as $category)
-                      <option value="{{ $category->id }}" >{{$category->name}}</option>
+                       <!--  $category->id && -->
+                      <option onclick="myFunction()" value="{{ $category->name }}" >{{$category->name}}</option>
                        @endforeach
                       </select>
                   </div>
@@ -70,5 +71,21 @@
 
 
 
+
+@endsection
+
+@section('scripts')
+
+<script>
+function myFunction() {
+    var opts = document.getElementById("names").options;
+for(var i = 0; i < opts.length; i++) {
+    if(opts[i].innerText == "Max") {
+        alert("found it at index " + i + " or number " + (i + 1));
+        break;
+    }
+}
+}
+</script>
 
 @endsection

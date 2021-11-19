@@ -13,21 +13,25 @@ class CreateBusinessesTable extends Migration
      */
     public function up()
     {
-        Schema::create('businesses', function (Blueprint $table) {
+        Schema::create('business', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->integer('user_id');
+            $table->string('name')->unique();
             $table->text('description');
             $table->string('slug');
-            $table->string('andress');
-            $table->string('website');
-            $table->string('email');
-            $table->string('contact');
-            $table->string('categoryName');
-            $table->string('subcategoryName');
-            $table->string('country');
-            $table->string('fax');
-            $table->string('city');
-            $table->string('image');
+            $table->string('andress')->nullable();;
+            $table->string('website')->nullable();;
+            $table->string('email')->nullable();;
+            $table->string('contact')->nullable();;
+            $table->string('categoryName')->nullable();;
+            $table->string('subcategoryName')->nullable();;
+            $table->string('country')->nullable();;
+            $table->string('code')->nullable();;
+            $table->string('zipcode')->nullable();;
+            $table->string('fax')->nullable();;
+            $table->string('city')->nullable();;
+            $table->string('image')->default('noLogo.png');
+            $table->string('featured_image')->default('no_featuredImage.jpg');
             $table->timestamps();
         });
     }
@@ -39,6 +43,6 @@ class CreateBusinessesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('businesses');
+        Schema::dropIfExists('business');
     }
 }

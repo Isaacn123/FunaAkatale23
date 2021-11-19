@@ -19,6 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('otp')->nullable();
+            $table->string('code')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('image')->default("noimage.jpg");
+            $table->boolean('status')->default(1);
+            $table->string('phone');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -32,5 +38,15 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+    }
+
+   /**
+     * address.
+     *
+     * @return void
+     */
+    public function address()
+    {
+        return $this->hasMany('App\Models\Address');
     }
 }
