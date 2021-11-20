@@ -17,6 +17,7 @@ class CreateBusinessesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('name')->unique();
+            $table->integer('featured_business')->default(1);
             $table->text('description');
             $table->string('slug');
             $table->string('andress')->nullable();;
