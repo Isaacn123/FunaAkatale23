@@ -18,6 +18,12 @@ class PostCategory extends Controller
         return Category::all();
     }
 
+
+
+   
+
+
+
     /**
      * Show the form for creating a new resource.
      *

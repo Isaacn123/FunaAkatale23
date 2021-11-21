@@ -44,6 +44,19 @@ class BusinessController extends Controller
 
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function business($category)
+    {
+        //
+        return Business::where('category', $category)->get();
+    }
+
+
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
