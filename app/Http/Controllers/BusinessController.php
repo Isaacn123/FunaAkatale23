@@ -51,7 +51,7 @@ class BusinessController extends Controller
     public function business($category)
     {
         //
-        return Business::where('category', $category)->get();
+        return Business::where('categoryName', $category)->get();
     }
 
 
