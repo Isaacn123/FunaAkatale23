@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Business;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\UserAuthController;
-use App\Http\controllers\CategoryController;
-use App\Http\controllers\PostCategory;
-use App\Http\controllers\PostSubCategory;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostCategory;
+use App\Http\Controllers\PostSubCategory;
 /*
 |--------------------------------------------------------------------------
 | API Routes
