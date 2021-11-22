@@ -59,6 +59,6 @@ class User extends Authenticatable
 
     public function address()
     {
-        return $this->hasMany('App\Models\Address');
+        return $this->hasMany('App\Address');
     }
 }
