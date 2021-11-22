@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Address;
+use App\Models\address;
 
 class User extends Authenticatable
 {
@@ -60,6 +60,6 @@ class User extends Authenticatable
 
     public function address()
     {
-        return $this->hasMany(Address::class);
+        return $this->hasMany(address::class);
     }
 }
