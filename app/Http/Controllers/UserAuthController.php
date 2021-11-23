@@ -236,7 +236,7 @@ class UserAuthController extends Controller
      public function all_address()
     {
          $user = User::find(Auth::user()->id);
-        $address = Address::where('user_id',$user)->orderBy('id','DESC')->get();
+        $address = Address::where('user_id',Auth::user()->id)->orderBy('id','DESC')->get();
         return response()->json(['msg' => 'All Addresses','data' => $address ,'success' => true], 200);
     }
     
