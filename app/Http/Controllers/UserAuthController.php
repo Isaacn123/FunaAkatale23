@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Address;
+use App\Models\address;
 
 class UserAuthController extends Controller
 {
