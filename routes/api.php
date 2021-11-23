@@ -34,6 +34,8 @@ Route::get('business',[BusinessController::class, 'index']);
 Route::get('category', [PostCategory::class, 'index']); 
 Route::get('sub_category/{id}', [PostSubCategory::class, 'index']); 
 Route::get('business/{category}', [BusinessController::class, 'business']); 
+Route::get('all_address', [UserAuthController::class, 'all_address']);
+
 
 // protected Routes
 Route::group(['middleware' => 'auth:sanctum'], function () {
