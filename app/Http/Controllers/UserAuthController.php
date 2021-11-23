@@ -232,4 +232,11 @@ class UserAuthController extends Controller
    return $response;
     
    }
+    
+     public function all_address()
+    {
+        $address = Address::where('user_id',Auth::user()->id)->orderBy('id','DESC')->get();
+        return response()->json(['msg' => 'All Addresses','data' => $address ,'success' => true], 200);
+    }
+    
 }
