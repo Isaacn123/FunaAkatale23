@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Business;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\UserAuthController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PostCategory;
-use App\Http\Controllers\PostSubCategory;
+use App\Http\controllers\CategoryController;
+use App\Http\controllers\PostCategory;
+use App\Http\controllers\PostSubCategory;
+use App\Http\controllers\ProductController;
+use App\Http\controllers\ReviewController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -35,10 +37,9 @@ Route::get('category', [PostCategory::class, 'index']);
 Route::get('sub_category/{id}', [PostSubCategory::class, 'index']); 
 Route::get('business/{category}', [BusinessController::class, 'business']); 
 
-
-
 // protected Routes
-Route::group(['middleware' => 'auth:sanctum'], function () {
+//Route::group(['middleware' => 'auth:sanctum'], function () {
+Route::group(['middleware' => 'auth:api'], function () {
     // return $request->user();
    
     Route::post('/business', [BusinessController::class, 'store']);
@@ -49,7 +50,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('profile_edit_image', [UserAuthController::class, 'profile_edit_image']); 
     Route::get('/profile',[UserAuthController::class, 'profile']); // done
     Route::post('add_address', [UserAuthController::class, 'add_address']); 
-    Route::get('all_address', [UserAuthController::class, 'all_address']);
+
+
 
     
    
@@ -60,7 +62,15 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 // Route::post('/business', [BusinessController::class, 'store']); 
 
-// Route::resource('business', BusinessController::class);
+   Route::apiResource('products', ProductController::class);
+
+   Route::group(['prefix' => 'products'], function (){
+      Route::apiResource('/{product}/reviews', ReviewController::class);
+   });
+
+   // Route::group(['middleware' => 'auth'], function () {
+      // Route::post('products', [ProductController::class, 'show']);
+//   });
 
 // Route::get('business/search/{name}', [BusinessController::class, 'search']); 
 
