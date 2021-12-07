@@ -79,7 +79,8 @@ class UserAuthController extends Controller
              'message'=> 'User email/Password Invalid',
          ]);
        }   
-        $token = $user->createToken('myuserToken')->plainTextToken;
+//         $token = $user->createToken('myuserToken')->plainTextToken;
+        $token = $user->createToken('myuserToken')->accessToken;
         $response = Response([
             'user' => $user,
             'token' => $token,
