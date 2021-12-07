@@ -64,7 +64,7 @@ class ProductController extends Controller
     {
         // 
         $product = new Product();
-        $user_id = User::find(Auth::user()->id);
+        $user_id = Auth::id();;
       
         // $product = Product::create($request->all());
         $product ->name = $request->name;
